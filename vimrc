@@ -21,18 +21,9 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
 Plugin 'sheerun/vim-polyglot'
-if has("nvim")
-    Plugin 'Shougo/deoplete.nvim' " YouCompleteMe substitute
-    Plugin 'kien/ctrlp.vim' " Command-T substitute
-    Plugin 'benekastah/neomake' " syntastic (+ more!) substitute
-    " wanted: neovim-compatible ultisnips substitute
-else
-    Plugin 'Valloric/YouCompleteMe'
-    Plugin 'wincent/Command-T'
-    Plugin 'SirVer/ultisnips'
-    Plugin 'scrooloose/syntastic'
-endif
-Plugin 'honza/vim-snippets'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'wincent/Command-T'
+Plugin 'scrooloose/syntastic'
 Plugin 'grvcoelho/vim-javascript-snippets'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'xolox/vim-misc'
@@ -41,6 +32,7 @@ Plugin 'luochen1990/rainbow'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-vinegar'
+Plugin 'christoomey/vim-tmux-navigator'
 " color schemes
 Plugin 'daylerees/colour-schemes', { 'rtp': 'vim/' }
 Plugin 'nanotech/jellybeans.vim'
@@ -71,10 +63,7 @@ endfunction
 au FileType javascript call JavaScriptFold()
 au FileType javascript setl fen
 
-" turn off vi compatibility
-if !has("nvim")
-    set nocompatible
-endif
+set nocompatible
 
 " prevents security exploits dealing with modelines in files
 set modelines=0
@@ -98,10 +87,8 @@ set scrolloff=3
 set showmode
 set visualbell
 set cursorline
-if !has("nvim")
-    if has("gui_running")
-        set ttyfast
-    endif
+if has("gui_running")
+    set ttyfast
 endif
 set backspace=indent,eol,start
 
@@ -198,6 +185,13 @@ vnoremap <F1> <ESC>
 " Remap jk to do same thing as <ESC> when in insert mode
 inoremap jk <ESC>
 
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> {Left-mapping} :TmuxNavigateLeft<cr>
+nnoremap <silent> {Down-Mapping} :TmuxNavigateDown<cr>
+nnoremap <silent> {Up-Mapping} :TmuxNavigateUp<cr>
+nnoremap <silent> {Right-Mapping} :TmuxNavigateRight<cr>
+nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
 
 " set guifont=Inconsolata:h16 "http://www.levien.com/type/myfonts/inconsolata.html
 " set guifont=Inconsolata\ for\ Powerline:h17 "https://github.com/Lokaltog/powerline-fonts
@@ -352,22 +346,9 @@ highlight link SyntasticWarningSign SignColumn
 highlight link SyntasticStyleErrorSign SignColumn
 highlight link SyntasticStyleWarningSign SignColumn
 
-" Neomake settings
-if has('nvim')
-    autocmd! BufWritePost * Neomake
-    let g:neomake_javascript_enabled_makers = ['eslint']
-    let g:neomake_python_enabled_makers = ['flake8']
-endif
-
 " javascript-libraries-syntax.vim settings
 let g:used_javascript_libs = 'underscore,backbone,react,flux,jasmine,chai'
 
-" Ctrl-P/Command-T settings
-if has("nvim")
-    let g:ctrlp_working_path_mode = 'r'
-    nmap <leader>t :CtrlPMixed<CR>
-    nmap <leader>b :CtrlPBuffer<CR>
-endif
 
 " `gf` will open JS file paths that don't end in .js (a la CommonJS/ES6 modules)
 set suffixesadd+=.js
