@@ -65,6 +65,12 @@ au FileType javascript setl fen
 
 set nocompatible
 
+"NERDTree Setup
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+map <C-d> :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 " prevents security exploits dealing with modelines in files
 set modelines=0
 
@@ -281,28 +287,7 @@ set switchbuf+=usetab,newtab
 " Change default YouCompleteMe diagnostic key command to maintain preexisting <leader>d setting
 let g:ycm_key_detailed_diagnostics = '<leader>yd'
 
-" Deoplete rules for neovim
-if has("nvim")
-    let g:python3_host_prog = '/usr/local/bin/python3'
-    let g:deoplete#enable_at_startup = 1
-
-    " tab-complete
-    inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : deoplete#mappings#manual_complete()
-
-    " <leader><Tab> for regular tab
-    inoremap <Leader><Tab> <Space><Space>
-
-    " add tern support for JS files
-    autocmd FileType javascript setlocal omnifunc=tern#Complete
-
-    " close Tern scratch window on completion
-    autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-endif
-
-" Only redraw screen after a macro has completed (performance boost!)
-if !has("nvim")
-    set lazyredraw
-endif
+set lazyredraw
 
 " Directory for custom snippets
 let g:UltiSnipsSnippetDirectories=["my_snippets"]
