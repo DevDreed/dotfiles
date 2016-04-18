@@ -245,8 +245,6 @@ map <leader>jt  <Esc>:%!python -m json.tool<CR>
 " Rules for vim-ragtag
 let g:ragtag_global_maps = 1
 
-" Make the 0 key go to first non-whitespace char
-" TODO: wrap in conditional so it toggles between first non-whitespace char and column 0
 nnoremap 0 ^
 vnoremap 0 ^
 
