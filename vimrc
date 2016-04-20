@@ -33,8 +33,10 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-vinegar'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'maksimr/vim-jsbeautify'
 " color schemes
-Plugin 'daylerees/colour-schemes', { 'rtp': 'vim/' }
+Bundle "daylerees/colour-schemes", { "rtp": "vim/" }
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-scripts/vilight.vim'
@@ -49,19 +51,19 @@ filetype indent on
 syntax on
 
 " Enable folding
-set foldmethod=syntax
-function! JavaScriptFold()
-    setl foldmethod=syntax
-    setl foldlevelstart=1
-    syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
+"set foldmethod=syntax
+"function! JavaScriptFold()
+    "setl foldmethod=syntax
+    "setl foldlevelstart=1
+    "syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
 
-    function! FoldText()
-        return substitute(getline(v:foldstart), '{.*', '{...}', '')
-    endfunction
-    setl foldtext=FoldText()
-endfunction
-au FileType javascript call JavaScriptFold()
-au FileType javascript setl fen
+    "function! FoldText()
+        "return substitute(getline(v:foldstart), '{.*', '{...}', '')
+    "endfunction
+    "setl foldtext=FoldText()
+"endfunction
+"au FileType javascript call JavaScriptFold()
+"au FileType javascript setl fen
 
 set nocompatible
 
@@ -84,9 +86,6 @@ set expandtab
 set autoindent
 set smartindent
 
-" Show TextMate-like whitespace chars for tab and end of line
-set list
-set listchars=tab:▸\ ,eol:¬
 
 " Random stuff from http://stevelosh.com/blog/2010/09/coming-home-to-vim/#making-vim-more-useful
 set scrolloff=3
@@ -120,7 +119,7 @@ set hidden
 set laststatus=2
 
 " Remap leader key from \ to space bar
-let mapleader = "\<Space>"
+let mapleader = ","
 
 " Remaps / search key to use standard regex instead of vim regex
 nnoremap / /\v
@@ -170,6 +169,12 @@ fun! s:LongLineHLToggle()
         echo "Long lines unhighlighted"
     endif
 endfunction
+
+" Navigate Splits
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 " Disables arrow keys in normal mode to enforce use of hjkl
 nnoremap <up> <nop>
@@ -332,6 +337,18 @@ highlight link SyntasticStyleWarningSign SignColumn
 " javascript-libraries-syntax.vim settings
 let g:used_javascript_libs = 'underscore,backbone,react,flux,jasmine,chai'
 
+".vimrc
+map <c-f> :call JsBeautify()<cr>
+" or
+autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+" for json
+autocmd FileType json noremap <buffer> <c-f> :call JsonBeautify()<cr>
+" for jsx
+autocmd FileType jsx noremap <buffer> <c-f> :call JsxBeautify()<cr>
+" for html
+autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
+" for css or scss
+autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 
 " `gf` will open JS file paths that don't end in .js (a la CommonJS/ES6 modules)
 set suffixesadd+=.js
