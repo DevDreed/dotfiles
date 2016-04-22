@@ -209,6 +209,7 @@ nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
 " Airline config
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#whitespace#mixed_indent_algo = 1
 
 " set guifont=Inconsolata:h16 "http://www.levien.com/type/myfonts/inconsolata.html
 " set guifont=Inconsolata\ for\ Powerline:h17 "https://github.com/Lokaltog/powerline-fonts
