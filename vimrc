@@ -191,6 +191,21 @@ inoremap <right> <nop>
 nnoremap j gj
 nnoremap k gk
 
+" <Leader>f{char} to move to {char}
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Move to line
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+
 " Remap F1 to Esc to avoid accidentally opening help docs
 inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
@@ -253,7 +268,7 @@ nnoremap <leader>s :b#<bar>bd#<cr>
 nnoremap <leader>D :bd!<cr>
 
 " Remap <leader>w to switch splits
-nnoremap <leader>w <C-w>w<cr>
+"nnoremap <leader>w <C-w>w<cr>
 
 " Tidy JSON - http://lumberjaph.net/perl/2009/02/17/tidify-a-json-in-vim.html 
 map <leader>jt  <Esc>:%!python -m json.tool<CR>
