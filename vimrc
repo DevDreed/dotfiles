@@ -35,6 +35,8 @@ Plugin 'tpope/vim-vinegar'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'maksimr/vim-jsbeautify'
+Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 " color schemes
 Bundle "daylerees/colour-schemes", { "rtp": "vim/" }
 Plugin 'nanotech/jellybeans.vim'

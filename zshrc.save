@@ -6,7 +6,7 @@ ZSH=$HOME/.oh-my-zsh
 
 # Set name of the OhMyZSH theme to load.
 # Look in ~/.oh-my-zsh/themes/
-ZSH_THEME="fletcherm"
+ZSH_THEME="dstufft"
 
 
 # Load the shell dotfiles, and then some:
@@ -54,7 +54,7 @@ plugins=(git zsh-syntax-highlighting vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
-# Add cabal bin
+dd cabal bin
 export PATH=$PATH:~/.cabal/bin
 
 # Add current directory bin
