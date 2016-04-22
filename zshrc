@@ -6,7 +6,7 @@ ZSH=$HOME/.oh-my-zsh
 
 # Set name of the OhMyZSH theme to load.
 # Look in ~/.oh-my-zsh/themes/
-ZSH_THEME="fletcherm"
+ZSH_THEME="agnoster"
 
 
 # Load the shell dotfiles, and then some:
