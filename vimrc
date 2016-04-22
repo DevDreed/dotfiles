@@ -38,6 +38,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'maksimr/vim-jsbeautify'
 Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'facebook/vim-flow'
 " color schemes
 Bundle "daylerees/colour-schemes", { "rtp": "vim/" }
 Plugin 'nanotech/jellybeans.vim'
