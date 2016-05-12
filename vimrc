@@ -39,6 +39,7 @@ Plugin 'maksimr/vim-jsbeautify'
 Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'facebook/vim-flow'
+Plugin 'cakebaker/scss-syntax.vim'
 " color schemes
 Bundle "daylerees/colour-schemes", { "rtp": "vim/" }
 Plugin 'nanotech/jellybeans.vim'
