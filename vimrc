@@ -193,6 +193,9 @@ inoremap <right> <nop>
 nnoremap j gj
 nnoremap k gk
 
+"jump to end of line while in Insert Mode
+inoremap <C-e> <C-o>$
+
 " <Leader>f{char} to move to {char}
 map  <Leader>f <Plug>(easymotion-bd-f)
 nmap <Leader>f <Plug>(easymotion-overwin-f)
